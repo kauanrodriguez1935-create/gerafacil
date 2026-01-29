@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>GeraFácil - Gerador de Nomes</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(0,0,0,0.35);
+      padding: 40px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    button {
+      background: #00c853;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00e676;
+      transform: scale(1.05);
+    }
+
+    #resultado {
+      margin-top: 30px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffeb3b;
+      min-height: 32px;
+    }
+
+    .ads {
+      margin-top: 35px;
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Gerador de Nomes para Empresas</h1>
+    <p>Clique no botão para gerar um nome criativo</p>
+
+    <button onclick="gerarNome()">Gerar nome</button>
+
+    <div id="resultado"></div>
+
+    <div class="ads">
+      <strong>Anúncio</strong><br>
+      Espaço reservado para Google AdSense
+    </div>
+  </div>
+
+  <script>
+    function gerarNome() {
+      const nomes = [
+        "Nova Ideia",
+        "Flash Digital",
+        "Impulso Tech",
+        "Start Fácil",
+        "Visão Criativa",
+        "Impacto Web",
+        "GeraFácil Pro"
+      ];
+
+      const aleatorio = Math.floor(Math.random() * nomes.length);
+      document.getElementById("resultado").innerText = nomes[aleatorio];
+    }
+  </script>
+
+</body>
+</html>
+
