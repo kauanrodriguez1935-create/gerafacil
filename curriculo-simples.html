@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Gerador de Currículo Simples | GeraFácil</title>
+<style>
+body { font-family: Arial; background:#2c5364; color:white; text-align:center; padding:30px;}
+.box { max-width:500px; margin:auto; background:rgba(0,0,0,.4); padding:25px; border-radius:15px;}
+input { width:90%; padding:10px; margin:6px;}
+button { padding:10px 20px; background:#ff9800; border:none; border-radius:10px;}
+#cv { margin-top:15px; }
+</style>
+</head>
+
+<body>
+<div class="box">
+<h1>Currículo Simples</h1>
+
+<input id="nome" placeholder="Seu nome">
+<input id="profissao" placeholder="Profissão">
+<input id="experiencia" placeholder="Experiência">
+
+<button onclick="gerar()">Gerar currículo</button>
+
+<div id="cv"></div>
+<a href="index.html">Voltar</a>
+</div>
+
+<script>
+function gerar() {
+  cv.innerHTML = `
+    <h3>${nome.value}</h3>
+    <p><strong>${profissao.value}</strong></p>
+    <p>${experiencia.value}</p>
+  `;
+}
+</script>
+</body>
+</html>
