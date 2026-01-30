@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Preço de Venda | GeraFácil</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #203a43;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: rgba(0,0,0,0.4);
+      padding: 25px;
+      border-radius: 15px;
+    }
+    input, button {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    button { background: #00c853; color: white; }
+    #res { margin-top: 15px; font-size: 18px; }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h1>Calculadora de Preço</h1>
+
+    <input type="number" id="custo" placeholder="Custo (R$)">
+    <input type="number" id="lucro" placeholder="Lucro desejado (%)">
+
+    <button onclick="calcular()">Calcular</button>
+    <div id="res"></div>
+
+    <a href="index.html">Voltar ao início</a>
+  </div>
+
+  <script>
+    function calcular() {
+      const custo = Number(custo.value);
+      const lucro = Number(lucro.value);
+      const venda = custo + (custo * lucro / 100);
+      res.innerText = "Preço de venda: R$ " + venda.toFixed(2);
+    }
+  </script>
+</body>
+</html>
