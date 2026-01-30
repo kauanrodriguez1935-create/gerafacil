@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Gerador de Slogans | GeraFácil</title>
+<style>
+body { background:#000046; color:white; text-align:center; font-family:Arial; padding:30px;}
+.box { max-width:450px; margin:auto; background:rgba(0,0,0,.5); padding:30px; border-radius:15px;}
+button { background:#00e676; padding:12px 25px; border:none; border-radius:20px;}
+#slogan { margin-top:20px; font-size:20px; color:#ffeb3b;}
+</style>
+</head>
+
+<body>
+<div class="box">
+<h1>Gerador de Slogans</h1>
+
+<button onclick="gerar()">Gerar slogan</button>
+<div id="slogan"></div>
+
+<a href="index.html">Voltar</a>
+</div>
+
+<script>
+function gerar() {
+  const slogans = [
+    "Inovação que move negócios",
+    "Qualidade que gera confiança",
+    "Seu sucesso começa aqui",
+    "Transformando ideias em resultados",
+    "Criando valor todos os dias"
+  ];
+  slogan.innerText = slogans[Math.floor(Math.random()*slogans.length)];
+}
+</script>
+</body>
+</html>
