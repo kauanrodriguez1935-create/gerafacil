@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Slogans para Empresas</title>
+  <meta name="description" content="Crie slogans criativos e profissionais para empresas, marcas e negócios.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1f2933;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f5f9;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Gerador de Slogans</h1>
+  <p>Crie frases criativas para sua empresa</p>
+</header>
+
+<main>
+  <label for="empresa">Nome da empresa ou nicho:</label>
+  <input type="text" id="empresa" placeholder="Ex: cafeteria, loja de roupas">
+
+  <button onclick="gerarSlogan()">Gerar slogan</button>
+
+  <div id="resultado"></div>
+</main>
+
+<footer>
+  © 2026 • Gerafácil
+</footer>
+
+<script>
+  function gerarSlogan() {
+    const empresa = document.getElementById("empresa").value;
+
+    if (empresa === "") {
+      alert("Digite o nome da empresa ou nicho.");
+      return;
+    }
+
+    const slogans = [
+      `Qualidade que faz a diferença em ${empresa}`,
+      `${empresa}: inovação que inspira confiança`,
+      `Transformando ideias em sucesso com ${empresa}`,
+      `${empresa} — simples, moderno e eficiente`,
+      `Onde qualidade e confiança se encontram: ${empresa}`
+    ];
+
+    const sloganAleatorio = slogans[Math.floor(Math.random() * slogans.length)];
+
+    document.getElementById("resultado").innerHTML =
+      "<strong>Slogan gerado:</strong><br>" + sloganAleatorio;
+  }
+</script>
+
+</body>
+</html>
