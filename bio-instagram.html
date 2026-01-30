@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Bio para Instagram | GeraFácil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg,#1cb5e0,#000046);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    .box {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(0,0,0,0.4);
+      padding: 30px;
+      border-radius: 15px;
+    }
+    button {
+      background: #00e676;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ffeb3b;
+    }
+    a { color: #ffeb3b; }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h1>Gerador de Bio para Instagram</h1>
+    <p>Crie uma bio criativa em segundos</p>
+
+    <button onclick="gerarBio()">Gerar bio</button>
+    <div id="resultado"></div>
+
+    <p><a href="index.html">Voltar ao início</a></p>
+  </div>
+
+  <script>
+    function gerarBio() {
+      const bios = [
+        "🚀 Transformando ideias em realidade",
+        "💡 Criatividade que gera resultados",
+        "📈 Seu negócio no próximo nível",
+        "✨ Simples, criativo e profissional",
+        "🔥 Ideias que fazem a diferença"
+      ];
+      resultado.innerText = bios[Math.floor(Math.random() * bios.length)];
+    }
+  </script>
+</body>
+</html>
