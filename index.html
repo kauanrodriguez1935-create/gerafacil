@@ -3,51 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="google-adsense-account" content="ca-pub-4388891989475413">
-  <title>GeraFácil - Gerador de Nomes</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388891989475413"
+  <title>GeraFácil — Ferramentas Online</title>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388891989475413"
      crossorigin="anonymous"></script>
+
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
+    }
+
+    header {
+      padding: 20px;
       text-align: center;
-      padding: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    header h1 {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .container {
-      background: rgba(0,0,0,0.35);
-      padding: 40px;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-
-    h1 {
-      margin-bottom: 10px;
       font-size: 32px;
     }
 
-    p {
-      font-size: 16px;
+    header p {
       opacity: 0.9;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.35);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    .card h2 {
+      margin-top: 0;
     }
 
     button {
       background: #00c853;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 12px 20px;
+      font-size: 16px;
       color: white;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 15px;
       transition: 0.3s;
     }
 
@@ -57,57 +70,105 @@
     }
 
     #resultado {
-      margin-top: 30px;
-      font-size: 26px;
+      margin-top: 15px;
+      font-size: 20px;
       font-weight: bold;
       color: #ffeb3b;
-      min-height: 32px;
+      min-height: 24px;
     }
 
-    .ads {
-      margin-top: 35px;
-      background: white;
-      color: black;
-      padding: 15px;
-      border-radius: 10px;
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
       font-size: 14px;
+    }
+
+    footer a {
+      color: #ffeb3b;
+      margin: 0 8px;
+      text-decoration: none;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Gerador de Nomes para Empresas</h1>
-    <p>Clique no botão para gerar um nome criativo</p>
+<header>
+  <h1>GeraFácil</h1>
+  <p>Ferramentas online simples, rápidas e gratuitas</p>
+</header>
 
+<main>
+
+  <!-- FERRAMENTA 1 -->
+  <div class="card">
+    <h2>Gerador de Nomes</h2>
+    <p>Crie nomes criativos para empresas e projetos.</p>
     <button onclick="gerarNome()">Gerar nome</button>
-
     <div id="resultado"></div>
-
-    <div class="ads">
-      <strong>Anúncio</strong><br>
-      Espaço reservado para Google AdSense
-    </div>
   </div>
 
-  <script>
-    function gerarNome() {
-      const nomes = [
-        "Nova Ideia",
-        "Flash Digital",
-        "Impulso Tech",
-        "Start Fácil",
-        "Visão Criativa",
-        "Impacto Web",
-        "GeraFácil Pro"
-      ];
+  <!-- FERRAMENTA 2 -->
+  <div class="card">
+    <h2>Gerador de Slogans</h2>
+    <p>Ideias rápidas de slogans para sua marca.</p>
+    <button onclick="gerarSlogan()">Gerar slogan</button>
+    <div id="slogan"></div>
+  </div>
 
-      const aleatorio = Math.floor(Math.random() * nomes.length);
-      document.getElementById("resultado").innerText = nomes[aleatorio];
+  <!-- FERRAMENTA 3 -->
+  <div class="card">
+    <h2>Calculadora de Lucro</h2>
+    <p>Descubra seu lucro rapidamente.</p>
+    <button onclick="calcularLucro()">Calcular</button>
+    <div id="lucro"></div>
+  </div>
+
+</main>
+
+<footer>
+  <a href="sobre.html">Sobre</a> |
+  <a href="privacidade.html">Política de Privacidade</a> |
+  <a href="contato.html">Contato</a>
+</footer>
+
+<script>
+  function gerarNome() {
+    const nomes = [
+      "Flash Digital",
+      "Nova Ideia",
+      "Impulso Tech",
+      "Visão Criativa",
+      "Start Fácil",
+      "Impacto Web",
+      "GeraFácil Pro",
+    ];
+    document.getElementById("resultado").innerText =
+      nomes[Math.floor(Math.random() * nomes.length)];
+  }
+
+  function gerarSlogan() {
+    const slogans = [
+      "Ideias que impulsionam",
+      "Criando o futuro hoje",
+      "Simples, rápido e eficiente",
+      "Transformando ideias em realidade"
+    ];
+    document.getElementById("slogan").innerText =
+      slogans[Math.floor(Math.random() * slogans.length)];
+  }
+
+  function calcularLucro() {
+    const custo = prompt("Digite o custo:");
+    const venda = prompt("Digite o preço de venda:");
+    if (custo && venda) {
+      const lucro = venda - custo;
+      document.getElementById("lucro").innerText =
+        "Lucro: R$ " + lucro;
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
-
