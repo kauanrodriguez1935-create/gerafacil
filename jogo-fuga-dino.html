@@ -54,107 +54,126 @@
 </div>
 
 <script>
-  const canvas = document.getElementById("game");
-  const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
 
-  const player = { x: 50, y: 320, w: 30, h: 30, vy: 0, jump: false };
-  const dino = { x: 300, y: 320, w: 40, h: 30 };
-  let obstacles = [];
-  let gravity = 1;
-  let gameOver = false;
-  let score = 0;
+// IMAGENS
+const playerImg = new Image();
+playerImg.src = "https://i.imgur.com/7yUVE0K.png"; // boneco
 
-  function moveLeft() {
-    player.x -= 15;
+const dinoImg = new Image();
+dinoImg.src = "https://i.imgur.com/6X12Y3F.png"; // dino
+
+const obstacleImg = new Image();
+obstacleImg.src = "https://i.imgur.com/JYUB0mG.png"; // obstáculo
+
+// PERSONAGENS
+const player = { x: 50, y: 300, w: 35, h: 40, vy: 0, jump: false };
+const dino = { x: 300, y: 300, w: 45, h: 40 };
+
+let obstacles = [];
+let gravity = 1;
+let gameOver = false;
+let score = 0;
+let level = 1;
+let speed = 3;
+
+// RANKING (localStorage)
+let bestScore = localStorage.getItem("bestScore") || 0;
+
+// CONTROLES
+function moveLeft() { player.x -= 15; }
+function moveRight() { player.x += 15; }
+function jump() {
+  if (!player.jump) {
+    player.vy = -15;
+    player.jump = true;
+  }
+}
+
+function createObstacle() {
+  obstacles.push({
+    x: canvas.width,
+    y: 315,
+    w: 30,
+    h: 30
+  });
+}
+
+function update() {
+  if (gameOver) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // GRAVIDADE
+  player.vy += gravity;
+  player.y += player.vy;
+
+  if (player.y >= 300) {
+    player.y = 300;
+    player.vy = 0;
+    player.jump = false;
   }
 
-  function moveRight() {
-    player.x += 15;
-  }
+  // DESENHAR PLAYER
+  ctx.drawImage(playerImg, player.x, player.y, player.w, player.h);
 
-  function jump() {
-    if (!player.jump) {
-      player.vy = -15;
-      player.jump = true;
-    }
-  }
+  // DINO (perseguidor)
+  dino.x -= speed * 0.6;
+  ctx.drawImage(dinoImg, dino.x, dino.y, dino.w, dino.h);
 
-  function createObstacle() {
-    obstacles.push({
-      x: canvas.width,
-      y: 340,
-      w: 20,
-      h: 30
-    });
-  }
+  // OBSTÁCULOS
+  obstacles.forEach(o => {
+    o.x -= speed;
+    ctx.drawImage(obstacleImg, o.x, o.y, o.w, o.h);
 
-  function update() {
-    if (gameOver) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Jogador
-    player.vy += gravity;
-    player.y += player.vy;
-
-    if (player.y >= 320) {
-      player.y = 320;
-      player.vy = 0;
-      player.jump = false;
-    }
-
-    ctx.fillStyle = "#000";
-    ctx.fillRect(player.x, player.y, player.w, player.h);
-
-    // Dino
-    dino.x -= 1.5;
-    ctx.fillStyle = "green";
-    ctx.fillRect(dino.x, dino.y, dino.w, dino.h);
-
-    // Obstáculos
-    ctx.fillStyle = "brown";
-    obstacles.forEach(o => {
-      o.x -= 4;
-      ctx.fillRect(o.x, o.y, o.w, o.h);
-
-      // Colisão
-      if (
-        player.x < o.x + o.w &&
-        player.x + player.w > o.x &&
-        player.y < o.y + o.h &&
-        player.y + player.h > o.y
-      ) {
-        gameOver = true;
-      }
-    });
-
-    // Colisão com dino
+    // COLISÃO
     if (
-      player.x < dino.x + dino.w &&
-      player.x + player.w > dino.x &&
-      player.y < dino.y + dino.h &&
-      player.y + player.h > dino.y
-    ) {
-      gameOver = true;
-    }
+      player.x < o.x + o.w &&
+      player.x + player.w > o.x &&
+      player.y < o.y + o.h &&
+      player.y + player.h > o.y
+    ) endGame();
+  });
 
-    // Pontuação
-    score++;
-    ctx.fillStyle = "#000";
-    ctx.fillText("Pontuação: " + score, 10, 20);
+  // COLISÃO COM DINO
+  if (
+    player.x < dino.x + dino.w &&
+    player.x + player.w > dino.x &&
+    player.y < dino.y + dino.h &&
+    player.y + player.h > dino.y
+  ) endGame();
 
-    if (gameOver) {
-      ctx.fillStyle = "red";
-      ctx.font = "24px Arial";
-      ctx.fillText("GAME OVER", 90, 200);
-    }
+  // PONTUAÇÃO
+  score++;
+  ctx.fillStyle = "#000";
+  ctx.fillText("Pontos: " + score, 10, 20);
+  ctx.fillText("Fase: " + level, 10, 40);
+  ctx.fillText("Recorde: " + bestScore, 10, 60);
 
-    requestAnimationFrame(update);
+  // FASES
+  if (score % 300 === 0) {
+    level++;
+    speed += 1;
   }
 
-  setInterval(createObstacle, 1500);
-  update();
-</script>
+  requestAnimationFrame(update);
+}
 
-</body>
-</html>
+function endGame() {
+  gameOver = true;
+
+  if (score > bestScore) {
+    bestScore = score;
+    localStorage.setItem("bestScore", bestScore);
+  }
+
+  ctx.fillStyle = "red";
+  ctx.font = "24px Arial";
+  ctx.fillText("GAME OVER", 90, 200);
+  ctx.fillText("Recarregue para jogar novamente", 30, 230);
+}
+
+setInterval(createObstacle, 1500);
+update();
+</script>
