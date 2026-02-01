@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Adivinhação | GeraFácil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🎮 Jogo da Adivinhação</h1>
+  <p>Tente adivinhar o número secreto (1 a 100)</p>
+</header>
+
+<main>
+  <div class="card">
+    <input type="number" id="palpite" placeholder="Digite seu palpite">
+    <br><br>
+    <button class="btn" onclick="verificar()">Verificar</button>
+
+    <p id="mensagem"></p>
+    <p id="tentativas"></p>
+  </div>
+</main>
+
+<script>
+  const numeroSecreto = Math.floor(Math.random() * 100) + 1;
+  let tentativas = 0;
+
+  function verificar() {
+    const palpite = Number(document.getElementById("palpite").value);
+    const mensagem = document.getElementById("mensagem");
+    const tent = document.getElementById("tentativas");
+
+    tentativas++;
+
+    if (palpite === numeroSecreto) {
+      mensagem.innerHTML = "🎉 Parabéns! Você acertou!";
+    } else if (palpite > numeroSecreto) {
+      mensagem.innerHTML = "📉 O número é menor!";
+    } else {
+      mensagem.innerHTML = "📈 O número é maior!";
+    }
+
+    tent.innerHTML = "Tentativas: " + tentativas;
+  }
+</script>
+
+</body>
+</html>
