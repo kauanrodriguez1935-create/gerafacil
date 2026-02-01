@@ -177,3 +177,11 @@ function endGame() {
 setInterval(createObstacle, 1500);
 update();
 </script>
+<script>
+// CONTROLES TECLADO
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowLeft") moveLeft();
+  if (e.key === "ArrowRight") moveRight();
+  if (e.key === "ArrowUp" || e.key === " ") jump();
+});
+  </script>
