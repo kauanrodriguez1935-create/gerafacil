@@ -60,6 +60,9 @@ const ctx = canvas.getContext("2d");
 // IMAGENS
 const playerImg = new Image();
 playerImg.src = "https://i.imgur.com/7yUVE0K.png"; // boneco
+  // SONS
+const jumpSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-quick-jump-arcade-game-239.mp3");
+const gameOverSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-player-losing-or-failing-2042.mp3");
 
 const dinoImg = new Image();
 dinoImg.src = "https://i.imgur.com/6X12Y3F.png"; // dino
@@ -162,7 +165,7 @@ function update() {
 
 function endGame() {
   gameOver = true;
-
+gameOverSound.play();
   if (score > bestScore) {
     bestScore = score;
     localStorage.setItem("bestScore", bestScore);
